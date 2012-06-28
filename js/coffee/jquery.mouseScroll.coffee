@@ -8,6 +8,7 @@ $ = jQuery
 
 $.fn.mouseScroll = (opt) ->
   default_options =
+    offsetTop: 0
     animationSpeed: 100
     easingFunction: "linear"
     scrollCallback: () ->
@@ -36,7 +37,7 @@ $.fn.mouseScroll = (opt) ->
     unless obj.stopScrolling
       $_scroll.stop(false, false)
       props =
-        scrollTop: "#{Math.floor e.clientY * obj.contentHeight / obj.windowHeight}px"
+        scrollTop: "#{(Math.floor e.clientY - options.offsetTop) * obj.contentHeight / obj.windowHeight}px"
         scrollLeft: "#{Math.floor e.clientX * obj.contentWidth / obj.windowWidth}px"
       $_scroll.animate props, options.animationSpeed, options.easingFunction, options.scrollCallback
 
