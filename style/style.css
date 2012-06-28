@@ -24,3 +24,20 @@ a {
   height: 5000px;
   background: url(../img/bg.png) repeat left top;
 }
+
+#stopBtn {
+  position: fixed;
+  right: 0;
+  top: 100px;
+  background: rgba(10, 10, 10, .7);
+}
+#stopBtn p,
+#stopBtn a {
+  color: #fff;
+  font-weight: bold;
+}
+
+#stopBtn a {
+  margin: 8px 12px;
+  line-height: 2em;
+}

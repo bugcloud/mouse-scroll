@@ -39,6 +39,14 @@ $(function() {
 *scrollCallback*
 スクロールが終わったときにコールされる関数を指定します。
 
+## Methods
+
+*stopScrolling()*
+スクロールを一時停止します。
+
+*restartScrolling()*
+スクロールを再開します。
+
 ## Sample
 http://bugcloud.github.com/mouse-scroll/
 

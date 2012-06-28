@@ -25,6 +25,7 @@ https://github.com/bugcloud/mouse-scroll
     $_that = $(this);
     $_scroll = $("html, body");
     $_win = $(window);
+    obj.stopScrolling = false;
     obj.windowWidth = $_win.width();
     obj.windowHeight = $_win.height();
     obj.contentWidth = $_that.outerWidth();
@@ -40,13 +41,21 @@ https://github.com/bugcloud/mouse-scroll
     });
     $("html").mousemove(function(e) {
       var props;
-      $_scroll.stop(false, false);
-      props = {
-        scrollTop: "" + (Math.floor(e.clientY * obj.contentHeight / obj.windowHeight)) + "px",
-        scrollLeft: "" + (Math.floor(e.clientX * obj.contentWidth / obj.windowWidth)) + "px"
-      };
-      return $_scroll.animate(props, options.animationSpeed, options.easingFunction, options.scrollCallback);
+      if (!obj.stopScrolling) {
+        $_scroll.stop(false, false);
+        props = {
+          scrollTop: "" + (Math.floor(e.clientY * obj.contentHeight / obj.windowHeight)) + "px",
+          scrollLeft: "" + (Math.floor(e.clientX * obj.contentWidth / obj.windowWidth)) + "px"
+        };
+        return $_scroll.animate(props, options.animationSpeed, options.easingFunction, options.scrollCallback);
+      }
     });
+    this.stopScrolling = function() {
+      return obj.stopScrolling = true;
+    };
+    this.restartScrolling = function() {
+      return obj.stopScrolling = false;
+    };
     return this;
   };
 
