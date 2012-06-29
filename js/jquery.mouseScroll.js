@@ -47,8 +47,8 @@ https://github.com/bugcloud/mouse-scroll
       if (!obj.stopScrolling) {
         $_scroll.stop(false, false);
         props = {
-          scrollTop: "" + ((Math.floor(e.clientY - options.offsetTop)) * obj.contentHeight / obj.windowHeight) + "px",
-          scrollLeft: "" + (Math.floor(e.clientX * obj.contentWidth / obj.windowWidth)) + "px"
+          scrollTop: "" + ((Math.floor(e.clientY - options.offsetTop)) * obj.contentHeight / obj.windowHeight - (obj.windowHeight - options.offsetTop) * 0.5) + "px",
+          scrollLeft: "" + (Math.floor(e.clientX * obj.contentWidth / obj.windowWidth - obj.windowWidth * 0.8)) + "px"
         };
         return $_scroll.animate(props, options.animationSpeed, options.easingFunction, options.scrollCallback);
       }
