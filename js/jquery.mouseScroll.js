@@ -17,6 +17,8 @@ https://github.com/bugcloud/mouse-scroll
     var $_scroll, $_that, $_win, default_options, obj, options;
     default_options = {
       offsetTop: 0,
+      scrollContent: "html, body",
+      mousemoveTarget: "html",
       animationSpeed: 100,
       easingFunction: "linear",
       scrollCallback: function() {}
@@ -24,7 +26,7 @@ https://github.com/bugcloud/mouse-scroll
     options = $.extend({}, default_options, opt);
     obj = {};
     $_that = $(this);
-    $_scroll = $("html, body");
+    $_scroll = $(options.scrollContent);
     $_win = $(window);
     obj.stopScrolling = false;
     obj.windowWidth = $_win.width();
@@ -40,7 +42,7 @@ https://github.com/bugcloud/mouse-scroll
       obj.windowWidth = $_win.width();
       return obj.windowHeight = $_win.height();
     });
-    $("html").mousemove(function(e) {
+    $(options.mousemoveTarget).mousemove(function(e) {
       var props;
       if (!obj.stopScrolling) {
         $_scroll.stop(false, false);

@@ -31,6 +31,15 @@ $(function() {
 **0**
 です。
 
+*scrollContent*
+スクロールさせるコンテンツのcssセレクタを文字列で指定します。デフォルト値は
+*html,body*
+
+*mousemoveTarget*
+マウスを動かすコンテンツのcssセレクタを文字列で指定します。デフォルト値は
+*html*
+です。
+
 *animationSpeed*
 スクロールするスピードを数値で指定します。デフォルト値は
 **100**

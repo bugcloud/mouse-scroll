@@ -9,6 +9,8 @@ $ = jQuery
 $.fn.mouseScroll = (opt) ->
   default_options =
     offsetTop: 0
+    scrollContent: "html, body"
+    mousemoveTarget: "html"
     animationSpeed: 100
     easingFunction: "linear"
     scrollCallback: () ->
@@ -16,7 +18,7 @@ $.fn.mouseScroll = (opt) ->
   options = $.extend {}, default_options, opt
   obj = {}
   $_that = $(this)
-  $_scroll = $("html, body")
+  $_scroll = $(options.scrollContent)
   $_win = $(window)
   obj.stopScrolling = false
   obj.windowWidth = $_win.width()
@@ -33,7 +35,7 @@ $.fn.mouseScroll = (opt) ->
     obj.windowWidth = $_win.width()
     obj.windowHeight = $_win.height()
 
-  $("html").mousemove (e) ->
+  $(options.mousemoveTarget).mousemove (e) ->
     unless obj.stopScrolling
       $_scroll.stop(false, false)
       props =
